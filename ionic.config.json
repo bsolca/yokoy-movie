@@ -1,0 +1,8 @@
+{
+  "name": "yokoy movie",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "ca93b69e"
+}
