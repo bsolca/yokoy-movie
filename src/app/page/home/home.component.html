@@ -1,0 +1,21 @@
+<ion-app>
+  <ion-content class="ion-padding">
+    <ion-title>Movies</ion-title>
+    <ion-button>Add Movie</ion-button>
+    <app-movie-search></app-movie-search>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">Name</ion-col>
+        <ion-col size="3">Year</ion-col>
+        <ion-col size="3">Actor</ion-col>
+        <ion-col size="3">Rate</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let movie of movies">
+        <ion-col size="3">{{movie.name}}</ion-col>
+        <ion-col size="3">{{movie.year}}</ion-col>
+        <ion-col size="3">{{movie.actor}}</ion-col>
+        <ion-col size="3">{{movie.rate}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>
