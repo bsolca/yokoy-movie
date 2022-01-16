@@ -9,18 +9,40 @@ export class InMemoryDataService implements InMemoryDbService {
   movies: Movie[] = [
     {
       id: 1,
-      name: 'Titanic',
-      actor: 'Leonardo',
-      rate: 5,
-      year: 2022,
+      name: 'The Last Samurai',
+      actor: 'Tom Cruise',
+      rate: 10,
+      year: 2004,
     },
     {
       id: 2,
-      name: 'Jungle',
-      actor: 'Smith',
-      rate: 2,
+      name: 'The Matrix',
+      actor: 'Keanu Reeves',
+      rate: 9,
+      year: 1999,
+    },
+    {
+      id: 3,
+      name: 'Le Fabuleux Destin d\'Amélie Poulain',
+      actor: 'Audrey Tautou',
+      rate: 6,
+      year: 2001,
+    },
+    {
+      id: 4,
+      name: 'Dune',
+      actor: 'Zendaya',
+      rate: 8,
       year: 2021,
     },
+    {
+      id: 5,
+      name: 'The Butterfly Effect',
+      actor: 'Ashton Kutcher\n',
+      rate: 10,
+      year: 2004,
+    },
+
   ];
 
   createDb() {

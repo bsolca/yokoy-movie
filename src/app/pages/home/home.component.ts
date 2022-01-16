@@ -35,8 +35,8 @@ export class HomeComponent implements OnInit {
   }
 
   toggleModal = (isModalOpen: boolean, movie: Movie) => {
-    this.currentMovie = movie;
     this.isModalOpen = isModalOpen;
+    this.currentMovie = movie;
   };
 
   getMovies(): void {

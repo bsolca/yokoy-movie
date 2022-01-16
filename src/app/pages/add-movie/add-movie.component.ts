@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class AddMovieComponent implements OnInit {
   form = new FormGroup({});
-  model: Movie = {actor: 'Oui', id: null, name: 'nmaddwa', rate: 5, year: 12};
+  model: Movie = {actor: null, id: null, name: null, rate: 5, year: 2022};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
@@ -65,6 +65,8 @@ export class AddMovieComponent implements OnInit {
   ngOnInit() {
   }
 
+  back = () => this.router.navigate(['..'], {});
+
   onSubmit(movie: Movie) {
     console.log('Add movie', movie);
     this.movieService.addMovie(movie).subscribe(
@@ -76,6 +78,6 @@ export class AddMovieComponent implements OnInit {
         console.log(err);
       },
     );
-    this.router.navigate(['..'], {});
+    this.back();
   }
 }

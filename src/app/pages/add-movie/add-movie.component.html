@@ -1,8 +1,12 @@
 <ion-app>
-  <ion-content>
+  <ion-header class="ion-padding">
+    <ion-title>Add Movie</ion-title>
+  </ion-header>
+  <ion-content class="ion-padding">
     <form [formGroup]="form" (ngSubmit)="onSubmit(model)">
       <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-      <ion-button type="submit" class="btn btn-primary submit-button">Submit</ion-button>
+      <ion-button fill="outline" color="danger" (click)="back()">Cancel</ion-button>
+      <ion-button type="submit">Submit</ion-button>
     </form>
   </ion-content>
 </ion-app>
