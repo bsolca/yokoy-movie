@@ -1,8 +1,22 @@
 <ion-app>
   <ion-content class="ion-padding">
+    <app-movie-search></app-movie-search>
     <ion-title>Movies</ion-title>
     <ion-button [routerLink]="['/add-movie']">Add Movie</ion-button>
-    <app-movie-search></app-movie-search>
+    <ion-searchbar #searchBox (ionInput)="search(searchBox.value)"></ion-searchbar>
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-content>
+          <ion-title>Modal Content</ion-title>
+          <ion-grid>
+            <ion-row *ngFor="let i of [0,1,2,3,4,5]">
+              <ion-button (click)="rateMovie(this.currentMovie, i)">vote {{i}}</ion-button>
+            </ion-row>
+          </ion-grid>
+          <ion-button (click)="toggleModal(false, null)">Close</ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
     <ion-grid>
       <ion-row>
         <ion-col size="3">Name</ion-col>
@@ -10,7 +24,7 @@
         <ion-col size="3">Actor</ion-col>
         <ion-col size="3">Rate</ion-col>
       </ion-row>
-      <ion-row *ngFor="let movie of movies">
+      <ion-row *ngFor="let movie of movies$ | async" (click)="toggleModal(true, movie)">
         <ion-col size="3">{{movie.name}}</ion-col>
         <ion-col size="3">{{movie.year}}</ion-col>
         <ion-col size="3">{{movie.actor}}</ion-col>

@@ -15,23 +15,10 @@ export class MovieService {
   }
 
   /** GET heroes from the server */
-  getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.moviesUrl)
-      .pipe(
-        catchError(this.handleError<Movie[]>('getMovies', []))
-      );
-  }
-
-  /* GET movies whose name contains search term */
-  searchMovies(term: string): Observable<Movie[]> {
-    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-
+  getMovies(term?: string): Observable<Movie[]> {
     const params = new HttpParams({fromObject: {term}});
     return this.http.get<Movie[]>(this.moviesUrl, {params}).pipe(
-      catchError(this.handleError<Movie[]>('searchMovies', []))
+      catchError(this.handleError<Movie[]>('getMovies', []))
     );
   }
 

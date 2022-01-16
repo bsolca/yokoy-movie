@@ -10,7 +10,6 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './services/in-memory-data.service';
 import {HomeComponent} from './pages/home/home.component';
 import {HttpClientModule} from '@angular/common/http';
-import {MovieSearchComponent} from './components/movie-search/movie-search.component';
 import {FormlyFieldConfig, FormlyModule} from '@ngx-formly/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormlyIonicModule} from '@ngx-formly/ionic';
@@ -24,7 +23,6 @@ export const maxValidationMessage = (err, field: FormlyFieldConfig) => `should b
   declarations: [
     AppComponent,
     HomeComponent,
-    MovieSearchComponent,
     AddMovieComponent,
   ],
   entryComponents: [],

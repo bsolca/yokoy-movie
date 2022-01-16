@@ -44,6 +44,7 @@ export class InMemoryDataService implements InMemoryDbService {
       const collection = this.movies.slice();
       const dataEncapsulation = reqInfo.utils.getConfig().dataEncapsulation;
 
+      console.log('Query Size', reqInfo.query.get('term')[0]);
       const data = reqInfo.query.size === 0
         ? collection
         : collection.filter((m) => {
