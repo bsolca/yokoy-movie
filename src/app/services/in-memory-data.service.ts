@@ -10,7 +10,7 @@ export class InMemoryDataService implements InMemoryDbService {
     {
       id: 1,
       name: 'Titanic',
-      actor: 'Leonardoood odododo',
+      actor: 'Leonardo',
       rate: 5,
       year: 2022,
     },
@@ -24,7 +24,9 @@ export class InMemoryDataService implements InMemoryDbService {
   ];
 
   createDb() {
-    return this.movies;
+    return {
+      movies: this.movies
+    };
   }
 
   // HTTP GET interceptor
