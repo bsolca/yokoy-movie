@@ -23,10 +23,10 @@ export class InMemoryDataService implements InMemoryDbService {
     },
     {
       id: 3,
-      name: 'Le Fabuleux Destin d\'Amélie Poulain',
-      actor: 'Audrey Tautou',
-      rate: 6,
-      year: 2001,
+      name: 'The Intouchables',
+      actor: 'Omar Sy',
+      rate: 8,
+      year: 2011,
     },
     {
       id: 4,
@@ -66,7 +66,6 @@ export class InMemoryDataService implements InMemoryDbService {
       const collection = this.movies.slice();
       const dataEncapsulation = reqInfo.utils.getConfig().dataEncapsulation;
 
-      console.log('Query Size', reqInfo.query.get('term')[0]);
       const data = reqInfo.query.size === 0
         ? collection
         : collection.filter((m) => {

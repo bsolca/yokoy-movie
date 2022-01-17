@@ -40,11 +40,11 @@ export class AddMovieComponent implements OnInit {
         label: 'Actor',
         required: true,
         options: [
-          {label: 'Iron Man', value: 'iron_man'},
-          {label: 'Captain America', value: 'captain_america'},
-          {label: 'Black Widow', value: 'black_widow'},
-          {label: 'Hulk', value: 'hulk'},
-          {label: 'Captain Marvel', value: 'captain_marvel'},
+          {label: 'Tom Cruise', value: 'Tom Cruise'},
+          {label: 'Keanu Reeves', value: 'Keanu Reeves'},
+          {label: 'Omar Sy', value: 'Omar Sy'},
+          {label: 'Zendaya', value: 'Zendaya'},
+          {label: 'Ashton Kutcher', value: 'Ashton Kutcher'},
         ]
       },
     },
@@ -68,16 +68,8 @@ export class AddMovieComponent implements OnInit {
   back = () => this.router.navigate(['..'], {});
 
   onSubmit(movie: Movie) {
-    console.log('Add movie', movie);
-    this.movieService.addMovie(movie).subscribe(
-      res => {
-        console.log(res);
-        this.movieService.getMovies().subscribe((e) => console.log('3:', e));
-      },
-      err => {
-        console.log(err);
-      },
-    );
+    if (!movie.rate || !movie.name || !movie.year || !movie.actor) {return;}
+    this.movieService.addMovie(movie).subscribe((_) => this.movieService.getMovies());
     this.back();
   }
 }
