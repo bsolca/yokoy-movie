@@ -4,7 +4,6 @@ import {MovieService} from '../../services/movie.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, startWith, switchMap} from 'rxjs/operators';
-import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +19,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private movieService: MovieService,
     route: ActivatedRoute,
-    private modalController: ModalController,
     ) {
     route.params.subscribe((_) => this.getMovies());
   }
@@ -58,7 +56,7 @@ export class HomeComponent implements OnInit {
 
   rateMovie(movie: Movie, rating: number): void {
     movie.rate = rating;
-    this.movieService.updateMovie(movie).subscribe((m) => {
+    this.movieService.updateMovie(movie).subscribe((_) => {
       this.getMovies();
     });
     this.toggleModal(false, null);
