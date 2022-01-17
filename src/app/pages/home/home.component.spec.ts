@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { HomeComponent } from './home.component';
@@ -7,6 +7,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+import {Movie} from '../../interfaces/movie';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -17,11 +18,8 @@ describe('HomeComponent', () => {
       declarations: [ HomeComponent ],
       imports: [
         IonicModule.forRoot(),
-        HttpClientModule,
+        HttpClientTestingModule,
         RouterTestingModule
-        // HttpClientTestingModule,
-        // ReactiveFormsModule,
-        // RouterTestingModule,
       ],
     }).compileComponents();
 
@@ -32,15 +30,14 @@ describe('HomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    component.movies$.subscribe((m) => {
-      fixture.detectChanges();
-      console.log('Testy', m);
-    });
   });
 
-  // it('should fetch movies', () => {
-  //   com
-  //   component.movies$.subscribe((mo) => console.log(mo));
-  //   expect(5).toEqual(5);
-  // });
+  it('should toggle the modal', () => {
+    const movie: Movie = {actor: '', id: 0, name: '', rate: 0, year: 0};
+    expect(component.isModalOpen).toBeFalse();
+    expect(component.currentMovie).toEqual(null);
+    component.toggleModal(true, movie);
+    expect(component.isModalOpen).toBeTruthy();
+    expect(component.currentMovie).toEqual(movie);
+  });
 });
